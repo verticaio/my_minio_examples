@@ -1,1 +1,1 @@
-# MinIO Distributed Setup and other MinIO operations examples
+# MinIO Distributed Setup and other  operations examples
