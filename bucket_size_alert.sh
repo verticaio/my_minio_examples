@@ -1,7 +1,7 @@
 minio_env_name='minio_local_cluster'
 bucket_names=$(mc  ls $minio_env_name/ | awk  '{print $5}' | awk -F/ '{print $1}')
 bucket_limit='1' # compare with GB 
-email_address='devops@kapitalbank.az'
+email_address='devops@example.com'
 if ! check_mc_command="$(type -p 'mc')" || [[ -z $check_mc_command ]]; then
   echo "Please install minio client command...."
   exit 1
