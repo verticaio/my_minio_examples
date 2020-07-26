@@ -1,15 +1,15 @@
-# Do it below setup in every four server
+# Do it below steps in  every server
 # Disable firewall and selinux,
-$ systemctl stop firewalld  && systemctl disable firewalld && setenforce 0 && sed -i 's/enforcing/disabled/g' /etc/selinux/config /etc/selinux/config
+systemctl stop firewalld  && systemctl disable firewalld && setenforce 0 && sed -i 's/enforcing/disabled/g' /etc/selinux/config /etc/selinux/config
 
 # Install packages
-$ wget -O /usr/local/bin/minio https://dl.minio.io/server/minio/release/linux-amd64/minio
-$ chmod +x /usr/local/bin/minio
+wget -O /usr/local/bin/minio https://dl.minio.io/server/minio/release/linux-amd64/minio
+chmod +x /usr/local/bin/minio
 
 
 
 # Create service file
-$ cat > /lib/systemd/system/minio.service << EOF
+cat > /lib/systemd/system/minio.service << EOF
 [Unit]
 Description=minio
 Documentation=https://docs.min.io
@@ -32,8 +32,8 @@ SendSIGKILL=no
 WantedBy=multi-user.target
 EOF
 
-
-$ cat > /etc/default/minio << EOF
+# Create minio enviroment file
+cat > /etc/default/minio << EOF
 MINIO_OPTS="http://minio01:9000/mnt/VHD http://minio02:9000/mnt/VHD http://minio03:9000/mnt/VHD http://minio04:9000/mnt/VHD"
 MINIO_ACCESS_KEY="AKaHEgQ4II0S7BjT6DjAUDA4BX"
 MINIO_SECRET_KEY="SKFzHq5iDoQgF7gyPYRFhzNMYSvY6ZFMpH"
